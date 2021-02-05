@@ -1,0 +1,9 @@
+#default-img, #profile-img {
+  width: 2em;
+  height: 2em;
+  border-radius: 2em;
+}
+
+.no-clickable:hover {
+  cursor: alias;
+}

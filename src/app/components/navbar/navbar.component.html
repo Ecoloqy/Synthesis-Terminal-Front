@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+          class="navbar-toggler"
+          data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <div *ngIf="isLogged()">
+        <div class="d-inline-block nav-item">
+          <div class="nav-link nav-item no-clickable">Logged in as {{ username }}</div>
+        </div>
+        <div class="d-inline-block dropdown btn-group">
+          <a type="button" id="dropdown-menu-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img id="profile-img" src="{{ activeAvatarUrl }}">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">Profile</button>
+            <button class="dropdown-item" type="button">Settings</button>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ '/api/logout' }}">Logout</a>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isLogged()">
+        <li class="d-inline-block nav-item">
+          <a class="nav-link" href="{{ '/api/login/github' }}">Sign in</a>
+        </li>
+        <li class="d-inline-block nav-item">
+          <img id="default-img" src="{{ defaultImageUrl }}">
+        </li>
+      </div>
+    </ul>
+  </div>
+</nav>
