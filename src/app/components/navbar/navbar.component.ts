@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Account, AccountService} from "../../services/account/account.service";
-import {environment} from "../../../environments/environment.prod";
 
 @Component({
   selector: 'app-navbar',
@@ -21,14 +20,14 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.accountService.getActiveAccount().subscribe(data => {
       this.account = data;
-      if (data != null && data.avatarUrl != null) {
-        this.activeAvatarUrl = data.avatarUrl;
-        this.username = data.username;
+      if (this.account != null) {
+        this.activeAvatarUrl = this.account.avatarUrl;
+        this.username = this.account.username;
       }
     });
   }
 
-  isLogged() {
+  isLogged(): boolean {
     return this.account != null;
   }
 

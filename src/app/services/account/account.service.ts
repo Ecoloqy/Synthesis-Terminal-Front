@@ -9,7 +9,11 @@ export class AccountService {
   }
 
   public getActiveAccount(): Observable<Account> {
-    return this.http.get<Account>("/api/me")
+    return this.http.get<Account>("/api/me");
+  }
+
+  public logOut(): void {
+    this.http.get<Account>("/api/logout");
   }
 
 }
