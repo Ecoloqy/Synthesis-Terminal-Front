@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
+  backgroundImage: String = "url('/api/resources/img/background-image.jpg')";
+
   constructor() { }
 
   ngOnInit(): void {

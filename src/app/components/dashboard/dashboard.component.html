@@ -1,1 +1,31 @@
-<div>Hello dashboard</div>
+<section>
+  <div class="container">
+    <div class="row" *ngFor="let device of devices; let i = index">
+      <div class="col-md-3">
+        <div class="square-service-block">
+          <a>
+            <div class="ssb-icon"><i class="fa fa-paint-brush" aria-hidden="true"></i></div>
+            <h2 class="ssb-title">{{ device.name }}</h2>
+          </a>
+        </div>
+        <div class="btn-block" *ngFor="let pin of device.pins; let j = index">
+          <div *ngIf="pin.pinType == 'INPUT_SENSOR'">
+            <span>
+              {{ pin.switchName }}: {{ pin.sensorValue | currency : " " }} ºC
+            </span>
+          </div>
+          <div *ngIf="pin.pinType == 'OUTPUT_PUSH'">
+            <span>
+              {{ pin.switchName }}: <button type="button" class="btn btn-danger" (click)="switchButton(device.id, pin.id)">Switch</button>
+            </span>
+          </div>
+          <div *ngIf="pin.pinType == 'OUTPUT_BUTTON'">
+            <span>
+              {{ pin.switchName }}: <button type="button" class="btn btn-danger">ON</button> <button type="button" class="btn btn-danger">OFF</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

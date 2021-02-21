@@ -12,6 +12,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {RouterModule} from "@angular/router";
 import {ProfileComponent} from './components/profile/profile.component';
 import {AuthGuard} from "./services/authguard/authguard.service";
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,17 +23,19 @@ import {AuthGuard} from "./services/authguard/authguard.service";
     DashboardComponent,
     SettingsComponent,
     FooterComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
+      {path: '', component: HomepageComponent},
+      {path: 'about', component: AboutComponent},
+      {path: 'login', component: LoginComponent},
       {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
       {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-      {path: 'about', component: AboutComponent},
       {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-      {path: '', component: HomepageComponent},
       {path: '**', redirectTo: ''}
     ]),
   ],
